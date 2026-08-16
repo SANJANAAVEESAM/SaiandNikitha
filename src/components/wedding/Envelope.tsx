@@ -101,7 +101,7 @@ export function Envelope({ onOpened }: { onOpened: () => void }) {
           // No pool of light behind it and no contrast filter: the artwork is
           // high enough resolution to hold its own against the frost, and both
           // were only propping up the low-resolution screenshot it replaced.
-          style={{ filter: "drop-shadow(0 2px 12px oklch(0.28 0.03 55 / 0.2))" }}
+          style={{ filter: "drop-shadow(0 2px 12px oklch(0.28 0.03 130 / 0.2))" }}
         />
 
         {/* The names, since this mark carries only initials. Drawn from COUPLE
@@ -116,9 +116,9 @@ export function Envelope({ onOpened }: { onOpened: () => void }) {
             // that size, under 0.24em of tracking, the line ran off the right
             // of a 390px screen and lost its last letter. The gutter above is
             // the belt to this braces.
-            color: "oklch(0.22 0.035 55)",
+            color: "oklch(0.22 0.035 130)",
             fontSize: "clamp(0.85rem, 4.5vw, 1.2rem)",
-            textShadow: "0 1px 10px oklch(0.98 0.01 80 / 0.8)",
+            textShadow: "0 1px 10px oklch(0.98 0.01 130 / 0.8)",
             // The artwork carries roughly 23% empty height below its last
             // strong stroke — the sprig's faint tips trail into it. Left alone
             // that reads as a large gap. Pulled up by a share of the container
@@ -144,7 +144,7 @@ export function Envelope({ onOpened }: { onOpened: () => void }) {
         <span className="glass animate-cta-pulse rounded-full px-9 py-4 ring-1 ring-white/70">
           <span
             className="font-body text-[0.68rem] font-medium tracking-[0.3em] uppercase"
-            style={{ color: "oklch(0.34 0.03 60)" }}
+            style={{ color: "oklch(0.34 0.03 130)" }}
           >
             Open Invitation
           </span>

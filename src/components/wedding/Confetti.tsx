@@ -2,9 +2,9 @@ import { useMemo } from "react";
 
 const COLORS = [
   "oklch(0.79 0.13 18)", // blush
-  "oklch(0.86 0.14 92)", // soft gold
-  "oklch(0.94 0.03 88)", // cream
-  "oklch(0.7 0.1 45)", // terracotta
+  "oklch(0.86 0.14 130)", // soft gold
+  "oklch(0.94 0.03 130)", // cream
+  "oklch(0.7 0.1 130)", // terracotta
   "oklch(0.8 0.06 130)", // sage
 ];
 

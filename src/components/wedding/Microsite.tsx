@@ -494,7 +494,7 @@ const TILE_STYLE = {
   backdropFilter: "blur(3px)",
   WebkitBackdropFilter: "blur(3px)",
   border: "1px solid color-mix(in oklab, var(--gold) 34%, transparent)",
-  boxShadow: "0 10px 26px -16px oklch(0.32 0.03 60 / 0.4)",
+  boxShadow: "0 10px 26px -16px oklch(0.32 0.03 130 / 0.4)",
 } as const;
 
 function TileFace({ card }: { card: (typeof DETAIL_CARDS)[number] }) {

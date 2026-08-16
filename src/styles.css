@@ -13,8 +13,9 @@
  * The :root and .dark blocks define the actual color values using oklch.
  * All colors MUST use oklch format.
  *
- * Palette: Cordially-style warm editorial cream — ivory paper, espresso ink,
- * bronze CTAs, champagne gold ornaments, brushed silver foil.
+ * Palette: sand and olive. Warm paper, deep olive ink, olive ornaments.
+ * The ornament token is still called --gold; it is olive now, and renaming
+ * it would touch two dozen files to change nothing anyone can see.
  */
 
 @theme inline {
@@ -62,46 +63,46 @@
 
 :root {
   --radius: 0.25rem;
-  --background: oklch(0.965 0.012 80);
-  --foreground: oklch(0.28 0.02 60);
-  --card: oklch(0.982 0.008 84);
-  --card-foreground: oklch(0.28 0.02 60);
-  --popover: oklch(0.982 0.008 84);
-  --popover-foreground: oklch(0.28 0.02 60);
-  --primary: oklch(0.55 0.09 65);
-  --primary-foreground: oklch(0.975 0.01 84);
-  --secondary: oklch(0.93 0.018 80);
-  --secondary-foreground: oklch(0.32 0.025 60);
-  --muted: oklch(0.94 0.014 80);
-  --muted-foreground: oklch(0.5 0.03 65);
-  --accent: oklch(0.55 0.09 65);
-  --accent-foreground: oklch(0.975 0.01 84);
+  --background: oklch(0.955 0.016 95);
+  --foreground: oklch(0.26 0.03 130);
+  --card: oklch(0.975 0.012 95);
+  --card-foreground: oklch(0.26 0.03 130);
+  --popover: oklch(0.975 0.012 95);
+  --popover-foreground: oklch(0.26 0.03 130);
+  --primary: oklch(0.5 0.07 134);
+  --primary-foreground: oklch(0.975 0.012 95);
+  --secondary: oklch(0.92 0.022 100);
+  --secondary-foreground: oklch(0.3 0.03 130);
+  --muted: oklch(0.935 0.018 98);
+  --muted-foreground: oklch(0.51 0.03 125);
+  --accent: oklch(0.5 0.07 134);
+  --accent-foreground: oklch(0.975 0.012 95);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.885 0.016 80);
-  --input: oklch(0.885 0.016 80);
-  --ring: oklch(0.55 0.09 65);
+  --border: oklch(0.875 0.022 105);
+  --input: oklch(0.875 0.022 105);
+  --ring: oklch(0.5 0.07 134);
 
-  --gold: oklch(0.72 0.075 85);
-  --bronze: oklch(0.55 0.09 65);
+  --gold: oklch(0.62 0.07 132);
+  --bronze: oklch(0.5 0.07 134);
   /* For type sitting over an event card's artwork wash, where the
      ordinary foreground and bronze lose contrast against the image. */
-  --ink-strong: oklch(0.15 0.015 60);
-  --bronze-deep: oklch(0.4 0.1 62);
-  --ivory: oklch(0.965 0.012 80);
-  --pearl: oklch(0.985 0.006 84);
-  --silver: oklch(0.8 0.01 260);
-  --silver-deep: oklch(0.66 0.012 260);
+  --ink-strong: oklch(0.18 0.03 132);
+  --bronze-deep: oklch(0.44 0.07 135);
+  --ivory: oklch(0.965 0.014 96);
+  --pearl: oklch(0.985 0.008 96);
+  --silver: oklch(0.8 0.014 120);
+  --silver-deep: oklch(0.66 0.016 122);
 
-  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-display: "Fraunces", Georgia, serif;
   --font-script: "Parisienne", cursive;
   --font-monogram: "Pinyon Script", cursive;
-  --font-body: "Karla", system-ui, sans-serif;
+  --font-body: "Jost", system-ui, sans-serif;
   /* Carries both invitation lines — the reveal and the join-us line. */
-  --font-accent-soft: "Cormorant Infant", "Cormorant Garamond", Georgia, serif;
+  --font-accent-soft: "Fraunces", Georgia, serif;
 
-  --shadow-paper: 0 24px 60px -24px oklch(0.28 0.02 60 / 0.3);
-  --shadow-soft: 0 10px 30px -12px oklch(0.28 0.02 60 / 0.18);
+  --shadow-paper: 0 24px 60px -24px oklch(0.26 0.03 130 / 0.28);
+  --shadow-soft: 0 10px 30px -12px oklch(0.26 0.03 130 / 0.16);
   --gradient-gold: linear-gradient(90deg, transparent, var(--gold), transparent);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);

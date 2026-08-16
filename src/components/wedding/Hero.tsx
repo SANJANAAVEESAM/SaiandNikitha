@@ -66,7 +66,7 @@ export function Hero({ live }: { live: boolean }) {
               className="absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(180deg, oklch(0.2 0.03 55 / 0.2), oklch(0.2 0.03 55 / 0.06) 42%, oklch(0.2 0.03 55 / 0.2) 70%, oklch(0.18 0.03 55 / 0.5))",
+                  "linear-gradient(180deg, oklch(0.2 0.03 130 / 0.2), oklch(0.2 0.03 130 / 0.06) 42%, oklch(0.2 0.03 130 / 0.2) 70%, oklch(0.18 0.03 130 / 0.5))",
               }}
             />
           </div>
@@ -83,12 +83,15 @@ export function Hero({ live }: { live: boolean }) {
             }}
           >
             <h1
-              className="text-center font-display leading-[1.08] whitespace-nowrap text-white italic"
+              className="text-center font-display leading-[1.08] whitespace-nowrap text-white"
               style={{
                 fontSize: "clamp(2.1rem, 11vw, 3.3rem)",
-                // Explicit: the h1 rule's 600 has no italic cut here and would fake-bold.
+                // Upright and slightly tightened, which is how this direction
+                // sets a headline. Fraunces has enough character at this size
+                // that italic reads as decoration on top of decoration.
                 fontWeight: 400,
-                textShadow: "0 2px 18px oklch(0.24 0.03 60 / 0.4)",
+                letterSpacing: "-0.015em",
+                textShadow: "0 2px 18px oklch(0.24 0.03 130 / 0.4)",
               }}
             >
               {COUPLE_AMP}
