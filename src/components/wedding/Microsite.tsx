@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import {
+  BENEDICTIONS,
   CONTACTS,
   COUPLE,
   COUPLE_AMP,
@@ -10,11 +11,12 @@ import {
   type DetailIcon,
   EVENT_DAYS,
   EVENTS,
+  RITUALS,
   FULL_WEDDING_CAL,
   GALLERY_FOLDERS,
   HOTELS,
   hotelHref,
-  WEDDING_DATE_RANGE,
+  celebrationSpan,
   venueMapsHref,
   type WeddingEvent,
 } from "./data";
@@ -125,7 +127,7 @@ function Opening() {
               className="font-display leading-tight whitespace-nowrap text-foreground"
               style={{ fontSize: "clamp(1.35rem, 7.2vw, 1.9rem)" }}
             >
-              {WEDDING_DATE_RANGE}
+              {celebrationSpan()}
             </p>
             <div className="flex flex-col items-center gap-4">
               {/* A bare row of numerals does not say what it is counting to. */}
@@ -173,6 +175,16 @@ function Invitation() {
           style={{ background: "var(--gradient-gold)" }}
         />
 
+        {/* The three benedictions run across the head of the printed card,
+            one to each corner. Spread the same way here. */}
+        <div className="mb-7 flex items-baseline justify-between gap-2 px-1">
+          {BENEDICTIONS.map((b) => (
+            <span key={b} className="font-body text-[0.56rem] tracking-[0.14em] text-bronze-deep/80 italic">
+              {b}
+            </span>
+          ))}
+        </div>
+
         {/* Wider than 15rem now that it is set larger, so "Wedding ceremony of"
             still holds a single line under 0.2em of tracking. */}
         <p className="mx-auto max-w-[18rem] font-body text-[0.8rem] leading-[1.7] font-semibold tracking-[0.2em] uppercase text-bronze-deep">
@@ -207,6 +219,109 @@ function Invitation() {
       </div>
       </Reveal>
     </section>
+  );
+}
+
+/* --------------------------------- rituals --------------------------------- */
+
+/**
+ * What happens at the ceremony, in order, openable one at a time.
+ *
+ * Two of the printed card's four pages explain these, which is a fair signal
+ * of how much the family wanted guests to follow along. Closed by default: it
+ * is a long list, and a guest who wants the order should not have to scroll
+ * past every explanation to see it.
+ */
+function Rituals() {
+  const [open, setOpen] = useState<string | null>(null);
+
+  return (
+    <Section id="rituals">
+      <div className="text-center">
+        <p className="font-body text-[0.6rem] font-medium tracking-[0.3em] uppercase text-bronze-deep">
+          A South Indian Hindu wedding
+        </p>
+        <h2
+          className="mt-3 font-display leading-none text-foreground"
+          style={{ fontSize: "clamp(1.9rem, 8.6vw, 2.4rem)" }}
+        >
+          The ceremony
+        </h2>
+        <p className="mx-auto mt-4 max-w-[19rem] font-body text-[0.82rem] leading-relaxed text-foreground/75">
+          The rite is conducted in Sanskrit around a sacred fire. Here is the
+          order it follows, and what each part is for.
+        </p>
+      </div>
+
+      <div className="mt-9">
+        {RITUALS.map((r, i) => {
+          const isOpen = open === r.name;
+          return (
+            <div
+              key={r.name}
+              style={{
+                borderTop:
+                  i === 0 ? "none" : "1px solid color-mix(in oklab, var(--gold) 30%, transparent)",
+              }}
+            >
+              <button
+                type="button"
+                onClick={() => setOpen(isOpen ? null : r.name)}
+                className="flex w-full items-center justify-between gap-3 py-4 text-left"
+              >
+                <span className="min-w-0">
+                  <span className="block font-display text-[1.2rem] leading-tight text-ink-strong">
+                    {r.name}
+                  </span>
+                  {r.english && (
+                    <span className="mt-0.5 block font-body text-[0.68rem] text-muted-foreground">
+                      {r.english}
+                    </span>
+                  )}
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="shrink-0 font-body text-[1rem] text-bronze transition-transform"
+                  style={{ transform: isOpen ? "rotate(45deg)" : "none" }}
+                >
+                  +
+                </span>
+              </button>
+
+              <div
+                className="overflow-hidden transition-all"
+                style={{
+                  maxHeight: isOpen ? "34rem" : 0,
+                  opacity: isOpen ? 1 : 0,
+                  transitionDuration: "340ms",
+                }}
+              >
+                <p className="pb-4 font-body text-[0.84rem] leading-relaxed text-foreground/80">
+                  {r.text}
+                </p>
+                {r.vows && (
+                  <ol className="pb-5">
+                    {r.vows.map((v) => (
+                      <li
+                        key={v}
+                        className="border-l pl-4 font-body text-[0.8rem] leading-relaxed text-muted-foreground"
+                        style={{
+                          borderColor: "color-mix(in oklab, var(--gold) 45%, transparent)",
+                          paddingTop: "0.3rem",
+                          paddingBottom: "0.3rem",
+                        }}
+                      >
+                        {v}
+                      </li>
+                    ))}
+                  </ol>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </Section>
   );
 }
 
@@ -777,6 +892,10 @@ function GalleryList() {
 function Faqs() {
   const [contactOpen, setContactOpen] = useState(false);
 
+  // The card carries no telephone numbers. Rather than offer a button that
+  // opens an empty sheet, the section stays away until there are some.
+  if (CONTACTS.length === 0) return null;
+
   return (
     <>
       <Section id="faqs" className="text-center">
@@ -866,6 +985,7 @@ export function Microsite({ live }: { live: boolean }) {
         <Opening />
         <Invitation />
         <EventsSection />
+        <Rituals />
         <DetailCards />
         <Faqs />
 
