@@ -65,8 +65,8 @@ export function Envelope({ onOpened }: { onOpened: () => void }) {
         src={backdrop}
         alt=""
         aria-hidden="true"
-        width={800}
-        height={900}
+        width={850}
+        height={1277}
         className="absolute inset-0 h-full w-full object-cover object-center"
       />
 

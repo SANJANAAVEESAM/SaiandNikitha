@@ -179,8 +179,8 @@ function RootComponent() {
           <img
             src={backdrop}
             alt=""
-            width={800}
-            height={900}
+            width={850}
+            height={1277}
             className="h-full w-full object-cover object-center"
             style={{ opacity: 0.34 }}
           />

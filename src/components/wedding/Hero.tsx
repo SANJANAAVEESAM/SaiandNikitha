@@ -8,10 +8,9 @@ const COLLAPSE = 48;
 /**
  * Scene 4 — the couple filling the screen, their names along the foot.
  *
- * The picture is softened by a blur and held under a light warm veil. It began
- * as a pale wash at a fifth opacity, which looked washed out, then went too far
- * the other way into something near black; this sits between, and the softening
- * does the work the darkness was doing.
+ * The photograph is sharp, under a veil that is barely there through the middle
+ * and heavy at the foot — this picture is brightest exactly where the type sits,
+ * so the wash has to work hardest there.
  *
  * Its foot dissolves rather than stopping: the picture is masked away over the
  * last stretch so it melts into the page instead of ending on a ruled line —
@@ -28,7 +27,7 @@ export function Hero({ live }: { live: boolean }) {
       <div
         className="sticky top-0 z-10 h-[100dvh]"
         role="img"
-        aria-label={`An illustrated portrait of ${COUPLE_AND}`}
+        aria-label={`${COUPLE_AND} at their wedding`}
       >
         <div
           className="relative w-full overflow-hidden"
@@ -56,7 +55,7 @@ export function Hero({ live }: { live: boolean }) {
               src={couplePhoto}
               alt=""
               width={1000}
-              height={1333}
+              height={1500}
               // Sharp. A blur was tried across the whole picture and softened
               // the couple with it, which is the one thing on this screen that
               // should be in focus. Only the bottom edge is soft now.
@@ -66,7 +65,7 @@ export function Hero({ live }: { live: boolean }) {
               className="absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(180deg, oklch(0.2 0.03 130 / 0.2), oklch(0.2 0.03 130 / 0.06) 42%, oklch(0.2 0.03 130 / 0.2) 70%, oklch(0.18 0.03 130 / 0.5))",
+                  "linear-gradient(180deg, oklch(0.2 0.03 130 / 0.28), oklch(0.2 0.03 130 / 0.08) 38%, oklch(0.2 0.03 130 / 0.36) 66%, oklch(0.16 0.03 130 / 0.76))",
               }}
             />
           </div>
