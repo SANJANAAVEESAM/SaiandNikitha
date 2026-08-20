@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
-import { getMusicState, subscribeMusic, toggleMute } from "@/lib/music";
+import { getMusicState, startMusic, subscribeMusic, toggleMute } from "@/lib/music";
 
-/** Small glass control — only mounts once music is actually playing. */
+/**
+ * Small glass control: starts the music, then mutes it.
+ *
+ * It used to appear only once something was playing, because the opening
+ * screen's tap started the track. With no opening screen there is no such tap,
+ * and browsers will not begin audio without one — so this button is the
+ * gesture. Before anything plays it offers to play; after that it mutes.
+ */
 export function MusicToggle() {
   const [state, setState] = useState({ playing: false, muted: false });
 
@@ -10,7 +17,7 @@ export function MusicToggle() {
     return subscribeMusic(() => setState(getMusicState()));
   }, []);
 
-  if (!state.playing) return null;
+  const act = () => (state.playing ? toggleMute() : void startMusic());
 
   return (
     <button
@@ -18,16 +25,16 @@ export function MusicToggle() {
       // Acts on pointer-down rather than waiting for the click, so it responds
       // to the first tap instead of after Safari has finished deciding whether
       // a double-tap is coming.
-      onPointerDown={toggleMute}
+      onPointerDown={act}
       onClick={(e) => {
         // Only keyboard and assistive activation reach here: those dispatch a
         // click with no pointer behind it, which is what detail === 0 means.
         // Running on every click as well would toggle twice per tap and look
         // like nothing happened.
-        if (e.detail === 0) toggleMute();
+        if (e.detail === 0) act();
       }}
-      aria-label={state.muted ? "Unmute music" : "Mute music"}
-      aria-pressed={state.muted}
+      aria-label={!state.playing ? "Play music" : state.muted ? "Unmute music" : "Mute music"}
+      aria-pressed={state.playing && state.muted}
       className="glass fixed right-4 z-[60] flex size-11 items-center justify-center rounded-full shadow-[0_10px_28px_-12px_oklch(0.28_0.02_60/0.4)] transition-transform active:scale-95"
       style={{
         bottom: "calc(env(safe-area-inset-bottom) + 1rem)",
@@ -38,7 +45,7 @@ export function MusicToggle() {
     >
       <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-foreground/70">
         <path d="M11 5 6 9H3v6h3l5 4V5z" />
-        {state.muted ? (
+        {!state.playing || state.muted ? (
           <path d="m17 9 4 6M21 9l-4 6" />
         ) : (
           <>

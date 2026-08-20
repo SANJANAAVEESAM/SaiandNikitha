@@ -10,53 +10,33 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as DirectionsRouteImport } from './routes/directions'
-import { Route as TraditionalRouteImport } from './routes/traditional'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DirectionsRoute = DirectionsRouteImport.update({
-  id: '/directions',
-  path: '/directions',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TraditionalRoute = TraditionalRouteImport.update({
-  id: '/traditional',
-  path: '/traditional',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/directions': typeof DirectionsRoute
-  '/traditional': typeof TraditionalRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/directions': typeof DirectionsRoute
-  '/traditional': typeof TraditionalRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/directions': typeof DirectionsRoute
-  '/traditional': typeof TraditionalRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/directions' | '/traditional'
+  fullPaths: '/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/directions' | '/traditional'
-  id: '__root__' | '/' | '/directions' | '/traditional'
+  to: '/'
+  id: '__root__' | '/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  DirectionsRoute: typeof DirectionsRoute
-  TraditionalRoute: typeof TraditionalRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -68,27 +48,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/directions': {
-      id: '/directions'
-      path: '/directions'
-      fullPath: '/directions'
-      preLoaderRoute: typeof DirectionsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/traditional': {
-      id: '/traditional'
-      path: '/traditional'
-      fullPath: '/traditional'
-      preLoaderRoute: typeof TraditionalRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  DirectionsRoute: DirectionsRoute,
-  TraditionalRoute: TraditionalRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
