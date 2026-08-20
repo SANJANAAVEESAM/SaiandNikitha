@@ -11,7 +11,6 @@ import {
   type DetailIcon,
   EVENT_DAYS,
   EVENTS,
-  RITUALS,
   FULL_WEDDING_CAL,
   GALLERY_FOLDERS,
   HOTELS,
@@ -219,109 +218,6 @@ function Invitation() {
       </div>
       </Reveal>
     </section>
-  );
-}
-
-/* --------------------------------- rituals --------------------------------- */
-
-/**
- * What happens at the ceremony, in order, openable one at a time.
- *
- * Two of the printed card's four pages explain these, which is a fair signal
- * of how much the family wanted guests to follow along. Closed by default: it
- * is a long list, and a guest who wants the order should not have to scroll
- * past every explanation to see it.
- */
-function Rituals() {
-  const [open, setOpen] = useState<string | null>(null);
-
-  return (
-    <Section id="rituals">
-      <div className="text-center">
-        <p className="font-body text-[0.6rem] font-medium tracking-[0.3em] uppercase text-bronze-deep">
-          A South Indian Hindu wedding
-        </p>
-        <h2
-          className="mt-3 font-display leading-none text-foreground"
-          style={{ fontSize: "clamp(1.9rem, 8.6vw, 2.4rem)" }}
-        >
-          The ceremony
-        </h2>
-        <p className="mx-auto mt-4 max-w-[19rem] font-body text-[0.82rem] leading-relaxed text-foreground/75">
-          The rite is conducted in Sanskrit around a sacred fire. Here is the
-          order it follows, and what each part is for.
-        </p>
-      </div>
-
-      <div className="mt-9">
-        {RITUALS.map((r, i) => {
-          const isOpen = open === r.name;
-          return (
-            <div
-              key={r.name}
-              style={{
-                borderTop:
-                  i === 0 ? "none" : "1px solid color-mix(in oklab, var(--gold) 30%, transparent)",
-              }}
-            >
-              <button
-                type="button"
-                onClick={() => setOpen(isOpen ? null : r.name)}
-                className="flex w-full items-center justify-between gap-3 py-4 text-left"
-              >
-                <span className="min-w-0">
-                  <span className="block font-display text-[1.2rem] leading-tight text-ink-strong">
-                    {r.name}
-                  </span>
-                  {r.english && (
-                    <span className="mt-0.5 block font-body text-[0.68rem] text-muted-foreground">
-                      {r.english}
-                    </span>
-                  )}
-                </span>
-                <span
-                  aria-hidden="true"
-                  className="shrink-0 font-body text-[1rem] text-bronze transition-transform"
-                  style={{ transform: isOpen ? "rotate(45deg)" : "none" }}
-                >
-                  +
-                </span>
-              </button>
-
-              <div
-                className="overflow-hidden transition-all"
-                style={{
-                  maxHeight: isOpen ? "34rem" : 0,
-                  opacity: isOpen ? 1 : 0,
-                  transitionDuration: "340ms",
-                }}
-              >
-                <p className="pb-4 font-body text-[0.84rem] leading-relaxed text-foreground/80">
-                  {r.text}
-                </p>
-                {r.vows && (
-                  <ol className="pb-5">
-                    {r.vows.map((v) => (
-                      <li
-                        key={v}
-                        className="border-l pl-4 font-body text-[0.8rem] leading-relaxed text-muted-foreground"
-                        style={{
-                          borderColor: "color-mix(in oklab, var(--gold) 45%, transparent)",
-                          paddingTop: "0.3rem",
-                          paddingBottom: "0.3rem",
-                        }}
-                      >
-                        {v}
-                      </li>
-                    ))}
-                  </ol>
-                )}
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </Section>
   );
 }
 
@@ -985,7 +881,6 @@ export function Microsite({ live }: { live: boolean }) {
         <Opening />
         <Invitation />
         <EventsSection />
-        <Rituals />
         <DetailCards />
         <Faqs />
 

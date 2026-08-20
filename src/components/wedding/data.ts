@@ -64,8 +64,8 @@ export const SITE_URL = "https://example.com";  // TODO: the real domain
 
 
 /** Credited in the closing line. */
-export const DESIGNER = "";  // TODO: credit, or leave blank to hide
-export const DESIGNER_URL = "";
+export const DESIGNER = "Sanjana Veesam";
+export const DESIGNER_URL = "https://www.instagram.com/sanjanaa_vv/";
 
 /**
  * Who to call. `tel` is the number that rings; `whatsapp` is only set when the
@@ -214,77 +214,6 @@ export const EVENT_DAYS: EventDay[] = [
   },
 ];
 
-/**
- * The order of the ceremony, as the card explains it to guests.
- *
- * Worth carrying over: most of the people reading this will sit through a rite
- * in Sanskrit and understand none of it, and the card clearly thought that
- * mattered enough to spend two of its four pages on.
- */
-export const RITUALS: { name: string; english?: string; text: string; vows?: string[] }[] = [
-  {
-    name: "Kasi Yatra",
-    text: "Hindu men pass through four stages of life — study, marriage, retirement, and asceticism. In this playful rite the groom sets off on pilgrimage to Kashi, and the bride's father asks him to reconsider and come back to marry his daughter.",
-  },
-  {
-    name: "Maalai Maathal",
-    english: "Exchange of garlands",
-    text: "The bride and groom place garlands on each other. The exchange represents the joining of two souls into one, a sharing of trust and a linking of families.",
-  },
-  { name: "Ganapathi Pooja", text: "Prayers to Ganapathi, that the marriage proceed without obstacle." },
-  {
-    name: "Punyahavachanam",
-    english: "The purification",
-    text: "Vessels of water are placed at the centre for the three holy rivers — Ganga, Yamuna and Godavari. The priest invokes their waters and sprinkles the marriage podium.",
-  },
-  { name: "Rakshabhandanam", text: "The tying of the sacred yellow thread." },
-  {
-    name: "Kanniyadhanam",
-    text: "The heart of the proceedings: the giving away of the bride. The priest invokes three generations of ancestors, and the bride's father places her hand in the groom's, entrusting her wellbeing to him and his family. The groom accepts that role.",
-  },
-  {
-    name: "Maangalya Dharanam",
-    text: "The tying of the Mangalsutra at the precise auspicious moment, the groom's sister assisting. From here the two are married, and the gathering showers them with flowers and rice.",
-  },
-  {
-    name: "Laaja Homam",
-    text: "The bride's brother fills her cupped hands with puffed rice; her husband adds a drop of ghee. It is offered to the fire and the couple circle it three times, a prayer to Agni for long life, prosperity and harmony.",
-  },
-  {
-    name: "Paani Grahanam",
-    english: "Holding of hands",
-    text: "The husband covers all five fingers of his wife's right hand with his own, and prays again for lasting togetherness.",
-  },
-  {
-    name: "Saptapadi",
-    english: "The seven steps",
-    text: "Seven steps around the fire, and seven vows.",
-    vows: [
-      "With this first step let us be nourished in mind and body.",
-      "With this second step let us be strong physically and spiritually.",
-      "With this third step let us be firm in our commitments.",
-      "With this fourth step let us always seek the truth.",
-      "With this fifth step let us be prosperous and independent.",
-      "With this sixth step let us fare well through all seasons of life.",
-      "With this seventh step let us grow in spiritual understanding.",
-    ],
-  },
-  {
-    name: "Ammi Mithithal",
-    english: "Stepping on the grinding stone",
-    text: "The husband places his wife's foot on a slab of granite, for the permanence of what they have made. An aunt places the toe rings.",
-  },
-  {
-    name: "Paalum Pazhamum",
-    english: "Milk and fruit",
-    text: "Milk and banana are given to the couple — signs of purity and prosperity — with the blessing that they meet life's difficulties with good sense and good cheer.",
-  },
-  {
-    name: "Aarthi",
-    english: "The final rite",
-    text: "Two women from each family circle a plate of coloured water before the couple while the rest sing, everyone praying for their wellbeing.",
-  },
-];
 
 /**
  * Hotels near the celebrations. Linked by name rather than by a stored URL:
