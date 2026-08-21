@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { COUPLE_AND } from "./data";
-import navMark from "@/assets/monogram-mark.png";
+import { COUPLE } from "./data";
+import nsMark from "@/assets/monogram-ns.png";
 
 const MENU_LINKS = [
   { href: "#home", label: "Home" },
@@ -55,20 +55,29 @@ export function FloatingNav({ visible }: { visible: boolean }) {
           aria-label="Back to top"
           className="flex items-center leading-none"
         >
-          {/* The whole mark from the opening screen, sprigs and all, cropped
-              to its ink. It was the letters alone for a while — the sprigs were
-              assumed to be noise at this size, but they are what makes it read
-              as the couple's mark rather than a monogram font. */}
-          <img
-            src={navMark}
-            alt={COUPLE_AND}
-            width={304}
-            height={220}
-            className="h-9 w-auto"
-            // The mark is a pale foil gold that all but vanished against the
-            // glass, next to a near-black menu icon. Darkened rather than
-            // recoloured flat, so the foil's shading survives.
-            style={{ filter: "brightness(0.5) saturate(1.6) contrast(1.25)" }}
+          {/* The couple's own NS mark.
+
+              Worn as a mask with the ink painted behind it, rather than shown
+              as a picture. The supplied file is a near-black script on solid
+              black — ink at luminance 16-47 against a 0-15 ground — so as an
+              image it would be a black rectangle on the glass. Keyed to alpha
+              and filled from the palette, it also follows the palette if that
+              ever changes. */}
+          <span
+            role="img"
+            aria-label={`${COUPLE.bride} and ${COUPLE.groom}`}
+            className="block h-8 w-[3.7rem]"
+            style={{
+              background: "var(--ink-strong)",
+              maskImage: `url(${nsMark})`,
+              WebkitMaskImage: `url(${nsMark})`,
+              maskSize: "contain",
+              WebkitMaskSize: "contain",
+              maskRepeat: "no-repeat",
+              WebkitMaskRepeat: "no-repeat",
+              maskPosition: "center",
+              WebkitMaskPosition: "center",
+            }}
           />
         </button>
 
