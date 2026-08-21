@@ -383,6 +383,21 @@ function EventsSection() {
             );
           })}
         </div>
+
+        {/* The printed card, for anyone who wants the original — the formal
+            Telugu wording, the family names as they were set, the whole thing
+            as it went out on paper. Quiet, and last, because everything a
+            guest actually needs is already above it. */}
+        <div className="mt-10 px-6 text-center">
+          <a
+            href="/wedding-card.pdf"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1.5 font-body text-[0.6rem] font-medium tracking-[0.16em] uppercase text-bronze-deep underline underline-offset-4"
+          >
+            View the printed invitation <span aria-hidden="true">↗</span>
+          </a>
+        </div>
       </Reveal>
 
       <Modal
