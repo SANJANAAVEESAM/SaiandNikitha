@@ -281,11 +281,17 @@ function EventsSection() {
           </h2>
           {/* A bare list of dates does not say what it is or how much of it
               there is. This does both in one line, before the thread starts.
-              The count is counted, not typed: it said five until a sixth
-              celebration was added, and nothing would have caught that. */}
+
+              Both numbers are counted rather than typed. The first said five
+              until a sixth celebration was added to another couple's copy of
+              this, and nothing caught it; the second said "two weeks", which
+              was true of that wedding and not of this one. Neither can drift
+              again. */}
           <p className="mx-auto mt-4 max-w-[19rem] font-body text-[0.82rem] leading-relaxed text-foreground/75">
-            {countWord(stops.length)} celebrations across two weeks. Here is each
-            one in order — when it begins, and where to find us.
+            {countWord(stops.length)} celebrations across{" "}
+            {countWord(EVENT_DAYS.length).toLowerCase()}{" "}
+            {EVENT_DAYS.length === 1 ? "day" : "days"}. Here is each one in
+            order — when it begins, and where to find us.
           </p>
         </div>
 
